@@ -13,6 +13,7 @@ sealed class Resource<out T> {
      */
     fun dataOrNull(): T? = (this as? Success<T>)?.data
 
+    @Suppress("UNCHECKED_CAST")
     fun dataOrEmptyList(): List<T> = (this as? Success<List<T>>)?.data
         ?: emptyList()
 
