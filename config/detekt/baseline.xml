@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<SmellBaseline>
+  <ManuallySuppressedIssues/>
+  <CurrentIssues>
+    <ID>ForbiddenComment:GenresFragment.kt$GenresFragment$// TODO: Error indicator</ID>
+  </CurrentIssues>
+</SmellBaseline>
