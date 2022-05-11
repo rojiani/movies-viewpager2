@@ -6,6 +6,8 @@ plugins {
     id "io.gitlab.arturbosch.detekt" version "${detekt_version}" apply false
     id "org.jetbrains.kotlin.kapt" version "${kotlin_version}" apply false
     id 'androidx.navigation.safeargs.kotlin' version "${navigation_version}" apply false
+    id 'org.jetbrains.kotlin.plugin.serialization' version "${kotlin_version}" apply false
+    id "com.star-zero.gradle.githook" version "${githooks_version}"
 }
 
 ext {
@@ -23,3 +25,4 @@ allprojects {
 }
 
 apply from: "$gradleScriptsDir/spotless.gradle"
+apply from: "$gradleScriptsDir/githooks.gradle"
