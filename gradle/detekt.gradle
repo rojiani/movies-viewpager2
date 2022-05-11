@@ -1,0 +1,34 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
+/******************************************************************************
+ * Detekt - Static Analysis
+ * https://arturbosch.github.io/detekt
+ ******************************************************************************/
+apply plugin: 'io.gitlab.arturbosch.detekt'
+
+detekt {
+    autoCorrect = false
+    parallel = true
+    buildUponDefaultConfig = true // preconfigure defaults
+    config = files("${rootProject.rootDir}/config/detekt/detekt.yml")
+    debug = false
+    ignoreFailures = false
+    baseline = file("${rootProject.rootDir}/config/detekt/baseline.xml")
+}
+
+task openDetektReport(type: Exec) {
+    group = "Reporting"
+    description = "Open the detekt report in the default browser"
+
+    doFirst {
+        assert file("${buildDir}/reports/detekt/detekt.html").exists()
+    }
+
+    def reportFile = "${buildDir}/reports/detekt/detekt.html"
+
+    if (Os.isFamily(Os.FAMILY_MAC)) {
+        commandLine "open", "${buildDir}/reports/detekt/detekt.html"
+    } else {
+        commandLine "echo", "Only MacOs supported, open ${reportFile} in your browser..."
+    }
+}
