@@ -52,5 +52,4 @@ class ResourceTest {
             delay(3_000L)
             (0..7).toList()
         }
-
 }

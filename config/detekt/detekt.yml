@@ -565,7 +565,7 @@ style:
     active: false
   MaxLineLength:
     active: true
-    maxLineLength: 120
+    maxLineLength: 150
     excludePackageStatements: true
     excludeImportStatements: true
     excludeCommentStatements: false
@@ -678,8 +678,6 @@ style:
     active: true
   UtilityClassWithPublicConstructor:
     active: true
+  # Defer to spotless/ktlint
   WildcardImport:
-    active: true
-    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/jsTest/**', '**/iosTest/**']
-    excludeImports:
-      - 'java.util.*'
+    active: false

@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'org.jetbrains.kotlin.kapt'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlinx-serialization'
 }
 
 android {
@@ -64,30 +65,26 @@ dependencies {
     implementation "com.jakewharton.timber:timber:$timber_version"
     implementation "io.ktor:ktor-client-android:$ktor_version"
     implementation "io.ktor:ktor-client-logging:$ktor_version"
+    implementation "io.ktor:ktor-client-serialization:$ktor_version"
+    implementation "io.ktor:ktor-client-content-negotiation:$ktor_version"
+    implementation("io.ktor:ktor-serialization-kotlinx-json:$ktor_version")
     implementation "androidx.viewpager2:viewpager2:$viewpager_version"
-    implementation "com.squareup.moshi:moshi:$moshi_version"
-    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
-    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinx_serialization_version"
+    implementation "org.slf4j:slf4j-nop:$slf4j_version"
+    implementation "org.apache.commons:commons-text:$commons_text_version"
 
     testImplementation "junit:junit:$junit_version"
     testImplementation "androidx.test.ext:junit-ktx:$junit_test_ext_version"
-
+    testImplementation "net.lachlanmckee:timber-junit-rule:$timber_junit_rule_version"
     testImplementation "androidx.test:core-ktx:$androidx_test_core_version"
     testImplementation "androidx.arch.core:core-testing:$arch_testing_version"
     testImplementation "io.kotest:kotest-assertions-core-jvm:$kotest_version"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
 
     // AndroidX Test - Instrumented testing
-    androidTestImplementation "junit:junit:$junit_version"
-    androidTestImplementation "androidx.test.ext:junit:$junit_test_ext_version"
-    androidTestImplementation "androidx.arch.core:core-testing:$arch_testing_version"
-    androidTestImplementation "androidx.test:core-ktx:$androidx_test_core_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_version"
-    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
-    androidTestImplementation "io.kotest:kotest-assertions-core-jvm:$kotest_version"
     androidTestImplementation "androidx.test:runner:$androidx_test_runner_version"
-    androidTestImplementation "net.lachlanmckee:timber-junit-rule:$timber_junit_rule_version"
 }
 
 apply from: "$gradleScriptsDir/detekt.gradle"
