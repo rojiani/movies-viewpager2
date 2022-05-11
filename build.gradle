@@ -8,6 +8,10 @@ plugins {
     id 'androidx.navigation.safeargs.kotlin' version "${navigation_version}" apply false
 }
 
+ext {
+    gradleScriptsDir = layout.projectDirectory.dir('gradle')
+}
+
 allprojects {
     // Delete all subproject build directories when "clean" task is run
     afterEvaluate {
@@ -18,4 +22,4 @@ allprojects {
     }
 }
 
-apply from: 'gradle/spotless.gradle'
+apply from: "$gradleScriptsDir/spotless.gradle"

@@ -31,7 +31,7 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_11
         freeCompilerArgs = [
-                '-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi,kotlin.time.ExperimentalTime'
+            '-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi,kotlin.time.ExperimentalTime'
         ]
     }
 
@@ -86,3 +86,5 @@ dependencies {
     androidTestImplementation "androidx.test:runner:$androidx_test_runner_version"
     androidTestImplementation "net.lachlanmckee:timber-junit-rule:$timber_junit_rule_version"
 }
+
+apply from: "$gradleScriptsDir/detekt.gradle"
