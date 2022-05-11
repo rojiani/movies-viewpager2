@@ -8,6 +8,6 @@
     <fragment
         android:id="@+id/genresFragment"
         android:name="com.nrojiani.moviesviewpager2.ui.genres.GenresFragment"
-        android:label="genres_fragment"
+        android:label="@string/action_bar_name"
         tools:layout="@layout/genres_fragment" />
 </navigation>
