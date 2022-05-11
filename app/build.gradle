@@ -65,6 +65,9 @@ dependencies {
     implementation "io.ktor:ktor-client-android:$ktor_version"
     implementation "io.ktor:ktor-client-logging:$ktor_version"
     implementation "androidx.viewpager2:viewpager2:$viewpager_version"
+    implementation "com.squareup.moshi:moshi:$moshi_version"
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
 
     testImplementation "junit:junit:$junit_version"
     testImplementation "androidx.test.ext:junit-ktx:$junit_test_ext_version"
