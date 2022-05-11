@@ -1,4 +1,4 @@
-package com.nrojiani.moviesviewpager2
+package com.nrojiani.moviesviewpager2.ui
 
 import android.os.Bundle
 import android.view.Menu
@@ -10,6 +10,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.google.android.material.snackbar.Snackbar
+import com.nrojiani.moviesviewpager2.R
 import com.nrojiani.moviesviewpager2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
