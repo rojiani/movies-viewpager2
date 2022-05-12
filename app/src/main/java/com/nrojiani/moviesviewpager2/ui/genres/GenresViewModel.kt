@@ -30,9 +30,4 @@ class GenresViewModel(
         started = WhileViewSubscribed,
         initialValue = Resource.Loading
     )
-
-    fun updateCurrentGenre(genre: Genre) {
-        Timber.d("updateCurrentGenre($genre)")
-        Timber.w("Not yet implemented: updateCurrentGenre($genre)")
-    }
 }

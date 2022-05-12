@@ -15,13 +15,11 @@ class RemoteMovieDataSource(
     private val dispatcher: CoroutineDispatcher = Dispatchers.Default,
 ) : IRemoteMovieDataSource {
 
-    override suspend fun fetchMovies(genre: String): List<Movie> =
-        withContext(dispatcher) {
-            httpClient.request("movies/$genre").body()
-        }
-
     override suspend fun fetchMovies(genre: Genre): List<Movie> =
-        fetchMovies(genre.key)
+        withContext(dispatcher) {
+            httpClient.request("movies/${genre.key}").body<List<Movie>>()
+                .map { movie -> movie.withPosterImageWidth(DEFAULT_IMAGE_WIDTH) }
+        }
 
     // No API to get the available genres
     override suspend fun fetchGenres(): List<Genre> =
@@ -31,5 +29,6 @@ class RemoteMovieDataSource(
 
     companion object {
         const val SAMPLE_APIS_HOST: String = "api.sampleapis.com"
+        const val DEFAULT_IMAGE_WIDTH: Int = 600
     }
 }

@@ -8,6 +8,18 @@
     <fragment
         android:id="@+id/genresFragment"
         android:name="com.nrojiani.moviesviewpager2.ui.genres.GenresFragment"
-        android:label="@string/action_bar_name"
-        tools:layout="@layout/genres_fragment" />
+        android:label="@string/genres_fragment_label"
+        tools:layout="@layout/genres_fragment">
+        <action
+            android:id="@+id/action_genresFragment_to_moviesViewPagerFragment"
+            app:destination="@id/moviesViewPagerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/moviesViewPagerFragment"
+        android:name="com.nrojiani.moviesviewpager2.ui.movies.MoviesViewPagerFragment"
+        android:label="@string/action_bar_name">
+        <argument
+            android:name="genre"
+            app:argType="com.nrojiani.moviesviewpager2.data.model.Genre" />
+    </fragment>
 </navigation>
