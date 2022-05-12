@@ -7,7 +7,5 @@ interface IRemoteMovieDataSource {
 
     suspend fun fetchGenres(): List<Genre>
 
-    suspend fun fetchMovies(genre: String): List<Movie>
-
     suspend fun fetchMovies(genre: Genre): List<Movie>
 }

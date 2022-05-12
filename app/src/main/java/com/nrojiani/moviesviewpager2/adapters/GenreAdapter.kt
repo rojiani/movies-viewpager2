@@ -16,8 +16,8 @@ class GenreAdapter(private val onItemClick: (genre: Genre) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(genre: Genre, clickListener: (genre: Genre) -> Unit) {
-            binding.genreNameText.text = genre.displayName()
-            binding.genreNameCard.setOnClickListener {
+            binding.genre = genre
+            binding.genreCard.setOnClickListener {
                 Timber.d("$genre clicked")
                 clickListener(genre)
             }

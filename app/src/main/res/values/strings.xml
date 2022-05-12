@@ -44,4 +44,7 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="content_description_movie_genre_image">Movie genre image</string>
+    <string name="content_description_movie_poster">Movie poster</string>
+    <string name="genres_fragment_label">Genres</string>
 </resources>

@@ -4,6 +4,7 @@ plugins {
     id 'org.jetbrains.kotlin.kapt'
     id 'androidx.navigation.safeargs.kotlin'
     id 'kotlinx-serialization'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -72,6 +73,8 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlinx_serialization_version"
     implementation "org.slf4j:slf4j-nop:$slf4j_version"
     implementation "org.apache.commons:commons-text:$commons_text_version"
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
 
     testImplementation "junit:junit:$junit_version"
     testImplementation "androidx.test.ext:junit-ktx:$junit_test_ext_version"
@@ -79,12 +82,13 @@ dependencies {
     testImplementation "androidx.test:core-ktx:$androidx_test_core_version"
     testImplementation "androidx.arch.core:core-testing:$arch_testing_version"
     testImplementation "io.kotest:kotest-assertions-core-jvm:$kotest_version"
+    testImplementation "io.mockk:mockk:$mockk_version"
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
 
-    // AndroidX Test - Instrumented testing
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_version"
     androidTestImplementation "androidx.test:runner:$androidx_test_runner_version"
+    androidTestImplementation "io.mockk:mockk-android:$mockk_version"
 }
 
 apply from: "$gradleScriptsDir/detekt.gradle"

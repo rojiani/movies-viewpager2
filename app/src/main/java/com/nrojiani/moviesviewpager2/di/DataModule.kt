@@ -18,8 +18,12 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.serialization.json.Json
 import timber.log.Timber
+import kotlin.reflect.KClass
 
 object DataModule {
+
+    // app-scoped singletons
+    private val instanceMap: MutableMap<KClass<*>, Any> = mutableMapOf()
 
     private fun provideJson(coerceNullOrUnknown: Boolean = false): Json = Json {
         encodeDefaults = false
@@ -30,7 +34,7 @@ object DataModule {
     }
 
     private fun provideBaseUrl(): Url = URLBuilder(
-        protocol = URLProtocol.HTTP,
+        protocol = URLProtocol.HTTPS,
         host = SAMPLE_APIS_HOST
     ).build()
 
@@ -68,11 +72,13 @@ object DataModule {
         }
     }
 
-    fun provideRemoteMoviesDataSource(
+    private fun provideRemoteMoviesDataSource(
         httpClient: HttpClient = provideHttpClient(),
         dispatcher: CoroutineDispatcher = Dispatchers.Default,
     ): IRemoteMovieDataSource =
-        RemoteMovieDataSource(httpClient, dispatcher)
+        instanceMap.getOrPut(IRemoteMovieDataSource::class) {
+            RemoteMovieDataSource(httpClient, dispatcher)
+        } as IRemoteMovieDataSource
 
     fun provideMoviesRepository(
         httpClient: HttpClient = provideHttpClient(),
@@ -81,6 +87,9 @@ object DataModule {
             httpClient,
             dispatcher
         )
-    ): IMoviesRepository =
-        MoviesRepository(remoteMovieDataSource)
+    ): IMoviesRepository {
+        return instanceMap.getOrPut(IMoviesRepository::class) {
+            MoviesRepository(remoteMovieDataSource)
+        } as IMoviesRepository
+    }
 }

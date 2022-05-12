@@ -22,12 +22,18 @@ class RemoteMovieDataSourceTest {
 
     @Test
     fun `fetchMovies by genre`() = runTest {
-        validateWesternMovies(remoteMovieDataSource.fetchMovies("western"))
-    }
-
-    @Test
-    fun `fetchMovies by enum genre`() = runTest {
-        validateWesternMovies(remoteMovieDataSource.fetchMovies(Genre.WESTERN))
+        val westerns = remoteMovieDataSource.fetchMovies(Genre.WESTERN)
+        westerns.shouldNotBeEmpty()
+            .shouldHaveAtLeastSize(60)
+            .shouldContain(
+                Movie(
+                    id = 9,
+                    title = "The Wild Bunch",
+                    posterUrl = "https://m.media-amazon.com/images/M/MV5BNGUyYTZmOWItMDJhMi00N2IxLW" +
+                        "IyNDMtNjUxM2ZiYmU5YWU1XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg",
+                    imdbId = "tt0065214"
+                )
+            )
     }
 
     @Test
@@ -43,19 +49,5 @@ class RemoteMovieDataSourceTest {
         remoteMovieDataSource.fetchGenres()
             .shouldContain(listOf(Genre.CLASSIC, Genre.WESTERN, Genre.ANIMATION))
             .shouldNotContain(listOf(Genre.ACTION_ADVENTURE, Genre.SCIFI_FANTASY))
-    }
-
-    private fun validateWesternMovies(westerns: List<Movie>) {
-        westerns.shouldNotBeEmpty()
-            .shouldHaveAtLeastSize(60)
-            .shouldContain(
-                Movie(
-                    id = 9,
-                    title = "The Wild Bunch",
-                    posterUrl = "https://m.media-amazon.com/images/M/MV5BNGUyYTZmOWItMDJhMi00N2IxLW" +
-                        "IyNDMtNjUxM2ZiYmU5YWU1XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg",
-                    imdbId = "tt0065214"
-                )
-            )
     }
 }

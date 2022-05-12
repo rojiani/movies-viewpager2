@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nrojiani.moviesviewpager2.R
 import com.nrojiani.moviesviewpager2.adapters.GenreAdapter
@@ -17,7 +18,6 @@ import com.nrojiani.moviesviewpager2.data.Resource
 import com.nrojiani.moviesviewpager2.data.model.Genre
 import com.nrojiani.moviesviewpager2.databinding.GenresFragmentBinding
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 class GenresFragment : Fragment() {
 
@@ -35,13 +35,9 @@ class GenresFragment : Fragment() {
         binding.genresList.layoutManager = LinearLayoutManager(requireContext())
         binding.genresList.adapter = GenreAdapter(
             onItemClick = { genre ->
-                Timber.d("$genre clicked")
-                viewModel.updateCurrentGenre(genre)
-                Timber.w("TODO: navigate")
-                // TODO
-//                findNavController().navigate(
-                // TODO
-//                )
+                findNavController().navigate(
+                    GenresFragmentDirections.actionGenresFragmentToMoviesViewPagerFragment(genre)
+                )
             }
         )
 
