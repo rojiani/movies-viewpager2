@@ -7,3 +7,4 @@ learn [ViewPager2](https://developer.android.com/training/animation/screen-slide
 
 [Movies API](https://sampleapis.com/api-list/movies)
 
+<img src="docs/assets/viewpager2-demo.gif" width="360" height="640"/>
